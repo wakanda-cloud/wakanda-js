@@ -1,0 +1,12 @@
+{
+  "name": "wakanda-js",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "node-minify": "latest"
+  },
+  "scripts": {
+    "start": "node compile.js"
+  }
+
+}
