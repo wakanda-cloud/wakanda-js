@@ -5,7 +5,7 @@
 ```html
   <!--Works with jquery-1.11.0 or greater!-->
   <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="></script><br>
-  <script src="https://cdn.jsdelivr.net/gh/lucasventurasc/wakanda-js@v1.2/dist/wakanda-min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/wakanda-cloud/wakanda-js@v1.2/dist/wakanda-min.js"></script>
 ```
 Start wakanda API like below
 
