@@ -37,6 +37,7 @@ class Wakanda {
             "module": context._module,
             "submodule": context._submodule,
             "title": context._title,
+            "capturedDate" : context._capturedDate,
             "linkClicked": linkClicked2,
             "location": context.geoLocation
         };
