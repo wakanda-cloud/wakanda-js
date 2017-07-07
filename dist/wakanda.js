@@ -6257,6 +6257,7 @@ class Wakanda {
             "module": context._module,
             "submodule": context._submodule,
             "title": context._title,
+            "capturedDate" : context._capturedDate,
             "linkClicked": linkClicked2,
             "location": context.geoLocation
         };
@@ -6360,6 +6361,14 @@ class Wakanda {
 
     get location() {
         return this._location;
+    }
+
+    set capturedDate(capturedDate) {
+        this._capturedDate = capturedDate;
+    }
+
+    get capturedDate() {
+        return this._capturedDate;
     }
 
     encrypt(text) {

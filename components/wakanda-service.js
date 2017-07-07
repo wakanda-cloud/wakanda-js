@@ -143,6 +143,14 @@ class Wakanda {
         return this._location;
     }
 
+    set capturedDate(capturedDate) {
+        this._capturedDate = capturedDate;
+    }
+
+    get capturedDate() {
+        return this._capturedDate;
+    }
+
     encrypt(text) {
         return CryptoJS.AES.encrypt(text, this.encryptkey, {
             mode: CryptoJS.mode.CTR
