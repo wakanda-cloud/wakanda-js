@@ -83,7 +83,7 @@
                         // Create default initializer
                         if (!subtype.hasOwnProperty('init') || this.init === subtype.init) {
                             subtype.init = function () {
-                                subtype.$super.init.apply(this, arguments);
+                                subtype.jQuerysuper.init.apply(this, arguments);
                             };
                         }
 
@@ -91,7 +91,7 @@
                         subtype.init.prototype = subtype;
 
                         // Reference supertype
-                        subtype.$super = this;
+                        subtype.jQuerysuper = this;
 
                         return subtype;
                     },
@@ -1625,7 +1625,7 @@
 
 
     /** @preserve
-     (c) 2012 by Cédric Mesnil. All rights reserved.
+     (c) 2012 by C�dric Mesnil. All rights reserved.
 
      Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
@@ -6222,7 +6222,7 @@ class Wakanda {
 
     constructor(encryptkey, apikey, options) {
         this.server = "https://wakanda-statistic-receiver.herokuapp.com/statistics";
-        this.async = true;
+        this.async = options.async;
         this.encryptkey = encryptkey;
         this.apiKey = apikey;
         this.client = options.client;
@@ -6244,10 +6244,10 @@ class Wakanda {
     fireRegisterStatistic(context, event) {
         context = this instanceof Wakanda ? this : context;
         let linkClicked2 = "";
-        if(event && $(event.currentTarget).attr('alt')) {
-            linkClicked2 = $(event.currentTarget).attr('alt');
+        if(event && jQuery(event.currentTarget).attr('alt')) {
+            linkClicked2 = jQuery(event.currentTarget).attr('alt');
         } else if(event) {
-            linkClicked2 = $(event.currentTarget).html();
+            linkClicked2 = jQuery(event.currentTarget).html();
         } else {
             linkClicked2 = "N/A";
         }
@@ -6258,7 +6258,7 @@ class Wakanda {
             "submodule": context._submodule,
             "title": context._title,
             "capturedDate" : context._capturedDate,
-            "linkClicked": linkClicked2,
+            "linkClicked": context._linkClicked && linkClicked2 === "N/A" ? context._linkClicked : linkClicked2,
             "location": context.geoLocation
         };
 
@@ -6268,22 +6268,25 @@ class Wakanda {
         };
 
         var settings = {
-            "async": true,
+            "async": context._async,
             "crossDomain": true,
             "url": context.server,
             "method": "POST",
+            "type": "POST",
             "headers": {
                 "content-type": "application/json",
                 "cache-control": "no-cache",
                 "postman-token": "d4db44ae-d915-c323-aa56-feb9289cfdef"
             },
+            "contentType": "application/json",
             "processData": false,
-            "data": JSON.stringify(json)
+            "data": JSON.stringify(json),
+            "success": function (response) {
+                console.log(response);
+            }
         }
 
-        $.ajax(settings).done(function (response) {
-            console.log(response);
-        });
+        jQuery.ajax(settings);
     }
 
     configGeolocation() {
