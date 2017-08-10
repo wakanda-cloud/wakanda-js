@@ -44,6 +44,16 @@ functions you can fire statistic manually like below:
   //Example 2: store Wakanda in a global variable to use after
   var wakanda = new Wakanda(yourEncryptKey, yourApiKey, appConfigs);
   wakanda.fireRegisterStatistic(wakanda);
+  
+  //Example 3: set linkClicked like a JSON in runtime
+  var wakanda = new Wakanda(yourEncryptKey, yourApiKey, appConfigs);
+  wakanda.linkClicked = JSON.stringify({
+    label : "Save",
+    identifier: "123",
+    systemVersion: "7.47.51-16"
+  })
+  wakanda.fireRegisterStatistic();
+  All json data stringifyed is free to setup any model what you want, you be able to see then when you consume the API
 ```
 
 If you working with a responsive page and some primary attributes (module, submodule, title) changes after
