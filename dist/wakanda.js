@@ -83,7 +83,7 @@
                         // Create default initializer
                         if (!subtype.hasOwnProperty('init') || this.init === subtype.init) {
                             subtype.init = function () {
-                                subtype.jQuerysuper.init.apply(this, arguments);
+                                subtype.$super.init.apply(this, arguments);
                             };
                         }
 
@@ -91,7 +91,7 @@
                         subtype.init.prototype = subtype;
 
                         // Reference supertype
-                        subtype.jQuerysuper = this;
+                        subtype.$super = this;
 
                         return subtype;
                     },
@@ -1625,7 +1625,7 @@
 
 
     /** @preserve
-     (c) 2012 by C�dric Mesnil. All rights reserved.
+     (c) 2012 by Cédric Mesnil. All rights reserved.
 
      Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
@@ -6380,5 +6380,3 @@ class Wakanda {
         }).toString();
     }
 }
-
-Wakanda.instance = function(){}
